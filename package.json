@@ -1,0 +1,63 @@
+{
+  "name": "md2pdf-exporter",
+  "displayName": "MD2PDF Exporter",
+  "description": "Convert Markdown files with Mermaid diagrams to styled PDF documents",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "md2pdf.exportCurrent",
+        "title": "Export current document to PDF"
+      },
+      {
+        "command": "md2pdf.exportSelected",
+        "title": "Export selected documents to PDF"
+      },
+      {
+        "command": "md2pdf.createConfig",
+        "title": "Create Configuration File"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "md2pdf.exportCurrent",
+          "group": "navigation"
+        },
+        {
+          "command": "md2pdf.exportSelected",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "16.x",
+    "eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0",
+    "marked": "^9.0.0",
+    "mermaid": "^10.0.0"
+  }
+}
